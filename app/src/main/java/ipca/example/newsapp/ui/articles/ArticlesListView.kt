@@ -19,10 +19,9 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import ipca.example.newsapp.models.Article
-import ipca.example.newsapp.models.encodeUrl
 import ipca.example.newsapp.ui.theme.NewsAppTheme
-
+import ipca.example.newsapp.domain.model.Article
+import ipca.example.newsapp.utils.encodeUrl
 
 @Composable
 fun ArticlesListView(
@@ -30,19 +29,18 @@ fun ArticlesListView(
     navController: NavController,
     source: String = ""
 ) {
-
-    val viewModel: ArticlesListViewModel = viewModel()
+    val viewModel : ArticlesListViewModel = viewModel()
     val uiState by viewModel.uiState
+
+    LaunchedEffect(source) {
+        viewModel.fetchArticles(source)
+    }
 
     ArticlesListViewContent(
         modifier = modifier,
         uiState = uiState,
         navController = navController
     )
-
-    LaunchedEffect(key1 = source) {
-        viewModel.fetchArticles(source)
-    }
 }
 
 @Composable
@@ -51,30 +49,22 @@ fun ArticlesListViewContent(
     uiState: ArticlesListState,
     navController: NavController
 ) {
-    Box(
-        modifier = modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
+    Box(modifier = modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center) {
         if (uiState.isLoading) {
             CircularProgressIndicator()
         } else if (uiState.error != null) {
-            Text(
-                uiState.error,
+            Text(uiState.error ?: "Erro desconhecido",
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(16.dp),
-                textAlign = TextAlign.Center
-            )
+                textAlign = TextAlign.Center)
         } else {
-            LazyColumn(
-                modifier = modifier
-                    .fillMaxSize()
-            ) {
-                itemsIndexed(
-                    items = uiState.articles,
-                ) { index, article ->
-                    ArticleViewCell(article) {
-                        navController.navigate("article/${article.url?.encodeUrl()}")
+            LazyColumn(modifier = modifier.fillMaxSize()) {
+                itemsIndexed(items = uiState.articles) { index, article ->
+                    ArticleViewCell(article){
+                        val encodedUrl = article.url?.encodeUrl() ?: ""
+                        navController.navigate("article/$encodedUrl")
                     }
                 }
             }
@@ -90,18 +80,11 @@ fun ArticlesListViewPreview() {
             modifier = Modifier.padding(10.dp),
             uiState = ArticlesListState(
                 articles = listOf(
-                    Article(
-                        title = "Title 1",
-                        description = "Description 1"
-                    ),
-                    Article(
-                        title = "Title 2",
-                        description = "Description 2"
-                    )
-
+                    Article("T1", "D1", "url", "img", "date"),
+                    Article("T2", "D2", "url", "img", "date")
                 ),
                 isLoading = false,
-                error = "No internet connection"
+                error = null
             ),
             navController = rememberNavController()
         )

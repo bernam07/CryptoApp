@@ -1,4 +1,4 @@
-package ipca.example.newsapp.ui
+package ipca.example.newsapp.ui.home
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement

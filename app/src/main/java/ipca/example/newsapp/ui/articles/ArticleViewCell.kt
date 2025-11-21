@@ -14,40 +14,36 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
-import ipca.example.newsapp.models.Article
+import ipca.example.newsapp.domain.model.Article // <--- Importar do Domain
 import ipca.example.newsapp.ui.theme.NewsAppTheme
 
 @Composable
 fun ArticleViewCell(
-    article: Article,
+    article : Article,
     modifier: Modifier = Modifier,
     onClick: () -> Unit = {}
-) {
-    Card(
+){
+    Card (
         modifier = modifier
             .padding(10.dp)
             .fillMaxWidth()
-            .clickable {
-                onClick()
-            },
+            .clickable{ onClick() },
         shape = RoundedCornerShape(12.dp),
-
-        ) {
-        Column(
-            modifier = Modifier.padding(8.dp),
-
-            ) {
+    ){
+        Column (modifier = Modifier.padding(8.dp)) {
             Text(
                 text = article.title ?: "",
                 modifier = Modifier.padding(bottom = 10.dp),
                 fontSize = 20.sp
             )
+
             AsyncImage(
                 model = article.urlToImage,
                 contentDescription = article.title,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.fillMaxWidth()
             )
+
             Text(
                 text = article.description ?: "",
                 modifier = Modifier.padding(top = 10.dp)
@@ -58,17 +54,10 @@ fun ArticleViewCell(
 
 @Preview(showBackground = true)
 @Composable
-fun ArticleViewCellPreview() {
+fun ArticleViewCellPreview(){
     NewsAppTheme {
         ArticleViewCell(
-            article = Article(
-                "",
-                title = "Title",
-                description = "Description",
-                url = "",
-                urlToImage = "",
-                publishedAt = ""
-            )
+            article = Article("Title", "Desc", "url", "img", "date")
         )
     }
 }

@@ -22,8 +22,8 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import ipca.example.newsapp.ui.articles.ArticleDetailView
 import ipca.example.newsapp.ui.articles.ArticlesListView
-import ipca.example.newsapp.ui.HomeScreen
-import ipca.example.newsapp.ui.predefinedNewsSources
+import ipca.example.newsapp.ui.home.HomeScreen
+import ipca.example.newsapp.ui.home.predefinedNewsSources
 import ipca.example.newsapp.ui.theme.NewsAppTheme
 
 class MainActivity : ComponentActivity() {
