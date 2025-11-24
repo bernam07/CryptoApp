@@ -35,7 +35,7 @@ A interface foi construída 100% em **Jetpack Compose**, seguindo as diretrizes 
 * **[Coil](https://coil-kt.github.io/coil/):** Biblioteca para carregamento assíncrono de imagens.
 * **Arquitetura (Clean Arch):**
     * **Domain Layer (`GetArticlesUseCase`):** Lógica de negócio pura e modelos de dados independentes.
-    * **Data Layer (`ArticlesRepositoryImpl`):** Gestão de pedidos à API e parsing de JSON.
+    * **Data Layer (`ArticlesRepositoryImplementation`):** Gestão de pedidos à API e parsing de JSON.
     * **UI Layer (`ArticlesListViewModel`):** Gestão de estado (StateFlow) e componentes visuais.
 
 ## 🚀 Como Executar
@@ -50,7 +50,7 @@ Para compilar e executar o projeto, precisas de configurar a API Key.
     * Cria um ficheiro `local.properties` na raiz do projeto (se não existir).
     * Adiciona a seguinte linha:
         ```properties
-        NEWS_API_KEY=cola_aqui_a_tua_api_key
+        API_KEY= 
         ```
 
 3.  **Executar:**
