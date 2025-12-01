@@ -65,7 +65,7 @@ Este projeto utiliza a API pública da CoinPaprika, pelo que **não é necessár
 2.  **Instalação:**
     ```bash
     # 1. Clona este repositório
-    git clone [LINK_DO_TEU_REPOSITORIO]
+    git clone https://github.com/bernam07/CryptoApp.git
 
     # 2. Abre o projeto no Android Studio
     ```
