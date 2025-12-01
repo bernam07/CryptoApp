@@ -76,12 +76,6 @@ Este projeto utiliza a API pública da CoinPaprika, pelo que **não é necessár
     * Seleciona um emulador ou dispositivo físico.
     * Clica em **Run**.
 
-## 📱 Screenshots
-
-| Lista de Moedas | Detalhe da Moeda |
-|:---:|:---:|
-| *(Coloca aqui um print da Lista)* | *(Coloca aqui um print do Detalhe)* |
-
 ## 🔗 Créditos
 
 * Dados fornecidos por [CoinPaprika API](https://api.coinpaprika.com/).
