@@ -88,4 +88,4 @@ Este projeto utiliza a API pública da CoinPaprika, pelo que **não é necessár
 * Ícones/Logos fornecidos por CoinPaprika Static Assets.
 
 ---
-**Desenvolvido por [Bernardo Martins]**
+**Desenvolvido por Bernardo Martins**
